@@ -10,24 +10,25 @@ function Bluescreen({ errorCode }: Props) {
 	const [progress, setProgress] = useState(0);
 
 	useEffect(() => {
-		let isMounted = true;
-		let interval = setTimeout(() => {
-			if (progress <= 100) {
-				let currentProgress = progress;
-				let newProgress = (currentProgress += Math.floor(
-					Math.random() * 10
-				));
-				if (newProgress > 100) newProgress = 100;
-				if (isMounted) setProgress(newProgress);
-			} else {
-				if (isMounted) setProgress(100);
-				clearTimeout(interval);
+		let p = 0;
+		// Climb to 100% quickly (always advancing, never stalling at 0)...
+		const interval = setInterval(() => {
+			p = Math.min(100, p + Math.floor(Math.random() * 12) + 8);
+			setProgress(p);
+			if (p >= 100) {
+				clearInterval(interval);
+				// ...then "restart" back to the Windows desktop so the user
+				// isn't trapped. (Skip on the mobile width screen, where
+				// returning would only re-trigger this same screen.)
+				if (errorCode !== 'SCREEN_WIDTH_NOT_SUPPORTED') {
+					setTimeout(() => {
+						window.location.href = '/';
+					}, 600);
+				}
 			}
-		}, 1000);
-		return () => {
-			isMounted = false;
-		};
-	}, [progress]);
+		}, 130);
+		return () => clearInterval(interval);
+	}, [errorCode]);
 
 	return (
 		<>
