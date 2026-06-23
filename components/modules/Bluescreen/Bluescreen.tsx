@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import styles from './Bluescreen.module.css';
 
@@ -33,7 +32,7 @@ function Bluescreen({ errorCode }: Props) {
 	return (
 		<>
 			<Head>
-				<title>kassq - {errorCode || 'ERROR'}</title>
+				<title>Pedro Loula - {errorCode || 'ERROR'}</title>
 			</Head>
 			<div className={styles.container}>
 				<div className={styles.wrapper}>
@@ -46,26 +45,6 @@ function Bluescreen({ errorCode }: Props) {
 						</h2>
 					</div>
 					<h2>{progress}% complete</h2>
-					<div className={styles.aboutIssue}>
-						<div>
-							<Image
-								src="/images/windowsErrorQR.svg"
-								alt="svg"
-								width={140}
-								height={140}
-							></Image>
-						</div>
-						<div>
-							<h2>
-								For more information about this issue and
-								possible fixes, visit https://kassq.dev/error
-							</h2>
-							<h2>
-								If you call a support person, give them this
-								info: Stop Code: {errorCode || 'UNKNOWN'}
-							</h2>
-						</div>
-					</div>
 				</div>
 			</div>
 		</>

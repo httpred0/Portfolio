@@ -6,10 +6,10 @@ function Documents() {
 	return (
 		<>
 			<Head>
-				<title>kassq - Documents</title>
+				<title>Pedro Loula - Documents</title>
 				<link
 					rel="canonical"
-					href="https://www.kassq.dev/explorer/documents"
+					href="https://www.pedroloula.com/explorer/documents"
 				/>
 
 				{/* Description */}
@@ -19,10 +19,10 @@ function Documents() {
 				/>
 
 				{/* OpenGraph */}
-				<meta property="og:title" content="Kassq - Documents" />
+				<meta property="og:title" content="Pedro Loula - Documents" />
 				<meta
 					property="og:url"
-					content="https://www.kassq.dev/explorer/documents"
+					content="https://www.pedroloula.com/explorer/documents"
 				/>
 				<meta
 					property="og:description"

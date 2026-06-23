@@ -6,6 +6,10 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head>
+				{/* Favicon */}
+				<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+				<link rel="alternate icon" href="/favicon.ico?v=2" />
+
 				{/* Fonts */}
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -19,13 +23,13 @@ export default function Document() {
 				<meta charSet="utf-8" />
 				<meta name="language" content="english" />
 
-				<meta name="author" content="kassq" />
-				<meta name="designer" content="kassq" />
-				<meta name="publisher" content="kassq" />
+				<meta name="author" content="Pedro Loula" />
+				<meta name="designer" content="Pedro Loula" />
+				<meta name="publisher" content="Pedro Loula" />
 
 				<meta
 					name="keywords"
-					content="kassq, kasperi, coding, development"
+					content="Pedro Loula, product designer, design systems, UX, UI, AI, product design, portfolio"
 				/>
 
 				<meta name="robots" content="index, follow" />
@@ -34,13 +38,13 @@ export default function Document() {
 				{/* Global OpenGraph tags */}
 				<meta
 					property="og:site_name"
-					content="Average Windows enjoyer"
+					content="Pedro Loula — Product Designer"
 				/>
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content="https://www.kassq.dev" />
+				<meta property="og:url" content="https://www.pedroloula.com" />
 				<meta
 					property="og:image"
-					content="https://www.kassq.dev/logo.webp"
+					content="https://www.pedroloula.com/og.png"
 				/>
 
 				{/* Global Site Tag (gtag.js) - Google Analytics */}

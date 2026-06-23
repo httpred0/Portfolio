@@ -6,7 +6,7 @@
 	z-index: 997;
 	overflow: hidden;
 	width: 35rem;
-	height: 35rem;
+	height: 30rem;
 	margin: auto;
 }
 
@@ -22,7 +22,7 @@
 	z-index: 2;
 	width: 100%;
 	height: 100%;
-	padding: 30px;
+	padding: 18px 22px;
 	border-radius: 15px;
 }
 
@@ -32,8 +32,10 @@
 	height: 100%;
 	border: 1px solid rgb(128 128 128 / 27.5%);
 	border-radius: 15px;
-	background-image: url('/images/darknoice.png');
-	opacity: 0.9;
+	background-color: var(--menu-bg);
+	background-image: var(--noise-image);
+	backdrop-filter: blur(40px) saturate(180%);
+	-webkit-backdrop-filter: blur(40px) saturate(180%);
 }
 
 .winMenuSearch input[type='text'] {
@@ -43,16 +45,16 @@
 	padding: 8px;
 	padding-left: 40px;
 	border: 1px solid rgb(128 128 128 / 17.2%);
-	border-bottom: 2px solid #4cc2ff;
+	border-bottom: 2px solid var(--accent);
 	border-radius: 4px;
-	background-color: #1a1a1a;
-	color: #c6c6c6;
+	background-color: var(--surface-bg);
+	color: var(--text-muted);
 	outline: none;
 }
 
 .winMenuSearch .inputWithIcon {
 	position: relative;
-	color: #c6c6c6;
+	color: var(--text-muted);
 }
 
 .winMenuSearch .inputWithIcon svg {
@@ -67,7 +69,7 @@
 .winMenuPinned {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	gap: 25px;
 	height: calc(100% - 100px);
 }
 
@@ -82,7 +84,7 @@
 }
 
 .winMenuPinnedTop h2 {
-	color: #fff;
+	color: var(--taskbar-text);
 	font-size: 0.8rem;
 }
 
@@ -94,8 +96,8 @@
 	height: 25px;
 	padding: 0 10px;
 	border-radius: 5px;
-	background-color: #353636;
-	color: #fff;
+	background-color: var(--hover-bg);
+	color: var(--taskbar-text);
 	font-size: 0.8rem;
 }
 
@@ -121,7 +123,7 @@
 }
 
 .winMenuRecommendedItem div:hover {
-	background-color: #2e2e2e;
+	background-color: var(--hover-bg);
 }
 
 .winMenuPinnedBottom {
@@ -143,26 +145,28 @@
 }
 
 .winMenuPinnedBottom div:hover {
-	background-color: #353636;
+	background-color: var(--hover-bg);
 }
 
 .winMenuPinnedContainer {
-	padding-right: 20px;
-	padding-left: 20px;
+	padding-right: 0;
+	padding-left: 0;
 }
 
 .winMenuFooter {
 	position: absolute;
 	bottom: 0;
-	z-index: 1;
+	z-index: 3;
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
-	padding: 10px;
+	padding: 10px 14px;
 	border-top: 1px solid rgb(128 128 128 / 27.5%);
 	border-radius: 0 0 15px 15px;
-	background-color: rgb(0 0 0 / 15%);
-	color: #fff;
+	background-color: var(--menu-footer-bg);
+	backdrop-filter: blur(28px) saturate(180%);
+	-webkit-backdrop-filter: blur(28px) saturate(180%);
+	color: var(--taskbar-text);
 	font-size: 1.2rem;
 }
 
@@ -174,10 +178,33 @@
 	display: flex;
 	gap: 10px;
 	align-items: center;
-	margin-right: 20px;
-	margin-left: 20px;
 }
 
 .winMenuFooter img {
 	border-radius: 50%;
+}
+
+.winMenuFooterActions {
+	gap: 5px !important;
+}
+
+.themeToggle {
+	margin: 0 !important;
+	padding: 6px 8px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+/* Hover highlight for the footer items (account, theme toggle, power).
+   Uses --hover-bg: a dark tint in light mode, a light tint in dark mode. */
+.footerItem {
+	padding: 6px 8px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.15s ease-in-out;
+}
+
+.themeToggle:hover,
+.footerItem:hover {
+	background-color: var(--hover-bg);
 }

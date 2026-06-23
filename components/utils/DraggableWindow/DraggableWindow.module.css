@@ -5,13 +5,13 @@
 	justify-content: center;
 	width: 100%;
 	height: 100%;
-	border: 1px solid #323232;
-	border-radius: 10px;
-	background-color: #191919;
+	border: 1px solid var(--window-border);
+	border-radius: 12px;
+	background-color: var(--window-bg);
 }
 
 .animatedWindow {
-	transition: all 0.2s ease-in-out;
+	transition: all 0.1s ease-in-out;
 }
 
 .main {
@@ -20,8 +20,9 @@
 }
 
 .main nav {
-	border-radius: 10px 10px 0 0;
-	background-color: #202020;
+	overflow: hidden;
+	border-radius: 11px 11px 0 0;
+	background-color: var(--window-nav-bg);
 }
 
 .top {
@@ -41,7 +42,7 @@
 }
 
 .top .icon:hover {
-	background-color: #2e2e2e;
+	background-color: var(--hover-bg);
 }
 
 .top .iconClose {
@@ -56,6 +57,7 @@
 
 .top .iconClose:hover {
 	background-color: red;
+	color: #fff;
 }
 
 .topContainer {
@@ -68,7 +70,7 @@
 	display: flex;
 	gap: 5px;
 	align-items: center;
-	color: #fff;
+	color: var(--window-text);
 }
 
 .terminalContainer {

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git clone *)",
+      "Bash(curl -sL -o bliss.jpg \"https://upload.wikimedia.org/wikipedia/commons/4/4d/Bliss_%28Windows_XP%29.png\")",
+      "Read(//c/c/Users/Pedro/Documents/Portfolio2/public/images/**)",
+      "Bash(curl -s -o /dev/null -w \"Home: %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(powershell -Command \"Stop-Process -Id 28288 -Force -ErrorAction SilentlyContinue\")"
+    ]
+  }
+}

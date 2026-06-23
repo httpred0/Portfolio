@@ -6,8 +6,8 @@ function Terminal() {
 	return (
 		<>
 			<Head>
-				<title>kassq - Terminal</title>
-				<link rel="canonical" href="https://www.kassq.dev/terminal" />
+				<title>Pedro Loula - Terminal</title>
+				<link rel="canonical" href="https://www.pedroloula.com/terminal" />
 
 				{/* Description */}
 				<meta
@@ -16,10 +16,10 @@ function Terminal() {
 				/>
 
 				{/* OpenGraph */}
-				<meta property="og:title" content="Kassq - Terminal" />
+				<meta property="og:title" content="Pedro Loula - Terminal" />
 				<meta
 					property="og:url"
-					content="https://www.kassq.dev/terminal"
+					content="https://www.pedroloula.com/terminal"
 				/>
 				<meta
 					property="og:description"

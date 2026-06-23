@@ -7,7 +7,8 @@ import styles from './Icons.module.css';
 const ESCAPE_KEYS = ['46', 'Delete'];
 
 function Icons() {
-	const [deleted, setDeleted] = useState(false);
+	// The bin holds a couple of "deleted" shortcuts, so show it full by default.
+	const [deleted, setDeleted] = useState(true);
 
 	const handleDelete = () => {
 		const selected = document.querySelectorAll(`.selected`);
@@ -65,17 +66,31 @@ function Icons() {
 							<p>About me</p>
 						</div>
 					</Link>
-					<Link href={'/explorer/projects'} passHref>
-						<div className={`${styles.item} selectoItem`}>
-							<Image
-								src="/icons/folder/folder.png"
-								alt="icon"
-								width={40}
-								height={40}
-							></Image>
-							<p>Projects</p>
-						</div>
-					</Link>
+					<div className={styles.row}>
+						<Link href={'/explorer/projects'} passHref>
+							<div className={`${styles.item} selectoItem`}>
+								<Image
+									src="/icons/folder/folder.png"
+									alt="icon"
+									width={40}
+									height={40}
+								></Image>
+								<p>Projects</p>
+							</div>
+						</Link>
+						<Link href={'/portfolio'} passHref>
+							<div className={`${styles.item} selectoItem`}>
+								<Image
+									src="/svg/chrome.svg"
+									alt="icon"
+									width={40}
+									height={40}
+									unoptimized
+								></Image>
+								<p>Portfolio</p>
+							</div>
+						</Link>
+					</div>
 					<Link href={'/explorer/tools'} passHref>
 						<div className={`${styles.item} selectoItem`}>
 							<Image
@@ -87,24 +102,14 @@ function Icons() {
 							<p>Tools</p>
 						</div>
 					</Link>
-					<Link href={'/explorer/podcasts'} passHref>
-						<div className={`${styles.item} selectoItem`}>
-							<Image
-								src="/icons/folder/folder.png"
-								alt="icon"
-								width={40}
-								height={40}
-							></Image>
-							<p>Podcasts I listen to</p>
-						</div>
-					</Link>
 					<Link href={'/explorer/links'} passHref>
 						<div className={`${styles.item} selectoItem`}>
 							<Image
-								src="/icons/links/links.png"
+								src="/icons/links/links.svg"
 								alt="icon"
 								width={40}
 								height={40}
+								unoptimized
 							></Image>
 							<p>Links</p>
 						</div>
@@ -133,24 +138,28 @@ function Icons() {
 						</div>
 					</Link>
 
-					<div className={`${styles.item} selectoItem recycleBin`}>
-						{deleted ? (
-							<Image
-								src="/icons/trash/trash_full.png"
-								alt="icon"
-								width={40}
-								height={40}
-							></Image>
-						) : (
-							<Image
-								src="/icons/trash/trash_empty.png"
-								alt="icon"
-								width={40}
-								height={40}
-							></Image>
-						)}
-						<p>Recycle Bin</p>
-					</div>
+					<Link href={'/explorer/recycle-bin'} passHref>
+						<div
+							className={`${styles.item} ${styles.recycleBin} selectoItem recycleBin`}
+						>
+							{deleted ? (
+								<Image
+									src="/icons/trash/trash_full.png"
+									alt="icon"
+									width={40}
+									height={40}
+								></Image>
+							) : (
+								<Image
+									src="/icons/trash/trash_empty.png"
+									alt="icon"
+									width={40}
+									height={40}
+								></Image>
+							)}
+							<p>Recycle Bin</p>
+						</div>
+					</Link>
 				</div>
 			</div>
 		</>

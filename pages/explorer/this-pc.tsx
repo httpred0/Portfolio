@@ -169,10 +169,10 @@ function ThisPC() {
 	return (
 		<>
 			<Head>
-				<title>kassq - This PC</title>
+				<title>Pedro Loula - This PC</title>
 				<link
 					rel="canonical"
-					href="https://www.kassq.dev/explorer/this-pc"
+					href="https://www.pedroloula.com/explorer/this-pc"
 				/>
 
 				{/* Description */}
@@ -182,10 +182,10 @@ function ThisPC() {
 				/>
 
 				{/* OpenGraph */}
-				<meta property="og:title" content="Kassq - This PC" />
+				<meta property="og:title" content="Pedro Loula - This PC" />
 				<meta
 					property="og:url"
-					content="https://www.kassq.dev/explorer/this-pc"
+					content="https://www.pedroloula.com/explorer/this-pc"
 				/>
 				<meta
 					property="og:description"

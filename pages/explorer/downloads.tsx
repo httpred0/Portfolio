@@ -6,10 +6,10 @@ function Downloads() {
 	return (
 		<>
 			<Head>
-				<title>kassq - Downloads</title>
+				<title>Pedro Loula - Downloads</title>
 				<link
 					rel="canonical"
-					href="https://www.kassq.dev/explorer/downloads"
+					href="https://www.pedroloula.com/explorer/downloads"
 				/>
 
 				{/* Description */}
@@ -19,10 +19,10 @@ function Downloads() {
 				/>
 
 				{/* OpenGraph */}
-				<meta property="og:title" content="Kassq - Downloads" />
+				<meta property="og:title" content="Pedro Loula - Downloads" />
 				<meta
 					property="og:url"
-					content="https://www.kassq.dev/explorer/downloads"
+					content="https://www.pedroloula.com/explorer/downloads"
 				/>
 				<meta
 					property="og:description"

@@ -113,12 +113,8 @@ function DraggableWindow({
 		if (windowName === 'fileExplorer') setHistory([]);
 		if (windowName === 'mediaPlayer') {
 			setTimeout(() => {
-				if (close) {
-					setTimeout(() => {
-						close(null);
-					}, 500);
-				}
-			}, 500);
+				if (close) close(null);
+			}, 120);
 			const newPriority = Object.fromEntries(
 				Object.entries(windowPriority).filter(
 					([key]) => key !== 'mediaPlayer'
@@ -129,7 +125,7 @@ function DraggableWindow({
 
 		setTimeout(() => {
 			router.push('/');
-		}, 500);
+		}, 120);
 	};
 
 	const handleClick = (e: MouseEvent<HTMLDivElement>, window: string) => {
@@ -280,7 +276,9 @@ function DraggableWindow({
 				>
 					<motion.div
 						onClick={(e) => handleClick(e, windowName)}
-						className={styles.container}
+						className={`${styles.container} ${
+							windowName === 'terminal' ? '' : 'windowSurface'
+						}`}
 						ref={nodeRef}
 						variants={variants}
 						animate={
@@ -292,7 +290,7 @@ function DraggableWindow({
 								: { scale: 0 }
 						}
 						exit={{ scale: 0 }}
-						transition={{ duration: 0.15 }}
+						transition={{ duration: 0.09 }}
 						style={
 							windowName === 'terminal'
 								? { backgroundColor: 'transparent' }

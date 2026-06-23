@@ -5,7 +5,7 @@ function Custom404() {
 	return (
 		<>
 			<Head>
-				<title>kassq - 404</title>
+				<title>Pedro Loula - 404</title>
 			</Head>
 			<Bluescreen errorCode="404_NOT_FOUND" />
 		</>

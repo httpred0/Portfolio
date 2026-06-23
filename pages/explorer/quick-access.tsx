@@ -162,10 +162,10 @@ function QuickAccess() {
 	return (
 		<>
 			<Head>
-				<title>kassq - Quick access</title>
+				<title>Pedro Loula - Quick access</title>
 				<link
 					rel="canonical"
-					href="https://www.kassq.dev/explorer/quick-access"
+					href="https://www.pedroloula.com/explorer/quick-access"
 				/>
 
 				{/* Description */}
@@ -175,10 +175,10 @@ function QuickAccess() {
 				/>
 
 				{/* OpenGraph */}
-				<meta property="og:title" content="Kassq - Quick access" />
+				<meta property="og:title" content="Pedro Loula - Quick access" />
 				<meta
 					property="og:url"
-					content="https://www.kassq.dev/explorer/quick-access"
+					content="https://www.pedroloula.com/explorer/quick-access"
 				/>
 				<meta
 					property="og:description"

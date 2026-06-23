@@ -104,10 +104,15 @@ function FileExplorer(props: Props) {
 			topTitle={props.folder}
 			topIcon={
 				<Image
-					src={`/icons/${props.icon}/${props.icon}.png`}
+					src={
+						props.icon.startsWith('/')
+							? props.icon
+							: `/icons/${props.icon}/${props.icon}.png`
+					}
 					alt="ico"
 					width={20}
 					height={20}
+					unoptimized
 				/>
 			}
 		>
@@ -311,10 +316,15 @@ function FileExplorer(props: Props) {
 				<div className={styles.navigatePath}>
 					<div className={styles.left}>
 						<Image
-							src={`/icons/${props.icon}/${props.icon}.png`}
+							src={
+								props.icon.startsWith('/')
+									? props.icon
+									: `/icons/${props.icon}/${props.icon}.png`
+							}
 							alt="ico"
 							width={20}
 							height={20}
+							unoptimized
 						/>
 						<AiFillCaretRight />
 						<input
@@ -345,7 +355,7 @@ function FileExplorer(props: Props) {
 						style={
 							router.pathname == '/explorer/quick-access'
 								? {
-										backgroundColor: '#2e2e2e',
+										backgroundColor: 'var(--hover-bg)',
 								  }
 								: {}
 						}
@@ -381,7 +391,7 @@ function FileExplorer(props: Props) {
 										router.asPath ==
 										'/explorer/desktop?top=true'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -402,7 +412,7 @@ function FileExplorer(props: Props) {
 										router.asPath ==
 										'/explorer/downloads?top=true'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -424,7 +434,7 @@ function FileExplorer(props: Props) {
 										router.asPath ==
 										'/explorer/documents?top=true'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -445,7 +455,7 @@ function FileExplorer(props: Props) {
 										router.asPath ==
 										'/explorer/pictures?top=true'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -466,7 +476,7 @@ function FileExplorer(props: Props) {
 						style={
 							router.pathname == '/explorer/this-pc'
 								? {
-										backgroundColor: '#2e2e2e',
+										backgroundColor: 'var(--hover-bg)',
 								  }
 								: {}
 						}
@@ -501,7 +511,7 @@ function FileExplorer(props: Props) {
 									style={
 										router.asPath == '/explorer/desktop'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -521,7 +531,7 @@ function FileExplorer(props: Props) {
 									style={
 										router.asPath == '/explorer/downloads'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -542,7 +552,7 @@ function FileExplorer(props: Props) {
 									style={
 										router.asPath == '/explorer/documents'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -563,7 +573,7 @@ function FileExplorer(props: Props) {
 									style={
 										router.asPath == '/explorer/pictures'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -584,7 +594,7 @@ function FileExplorer(props: Props) {
 									style={
 										router.asPath == '/explorer/videos'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -605,7 +615,7 @@ function FileExplorer(props: Props) {
 									style={
 										router.asPath == '/explorer/music'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -626,7 +636,7 @@ function FileExplorer(props: Props) {
 									style={
 										router.asPath == '/explorer/drives/C'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}
@@ -647,7 +657,7 @@ function FileExplorer(props: Props) {
 									style={
 										router.asPath == '/explorer/ssd2'
 											? {
-													backgroundColor: '#2e2e2e',
+													backgroundColor: 'var(--hover-bg)',
 											  }
 											: {}
 									}

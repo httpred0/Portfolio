@@ -8,6 +8,7 @@ import MediaPlayer from '../../components/windows/MediaPlayer/MediaPlayer';
 import { Context } from '../../context/ContextProvider';
 import styles from '../../styles/utils/MediaGrid.module.css';
 import { MediaType } from '../../typings';
+import { profile } from '../../config/profile';
 
 function Pictures({ data }: { data: MediaType[] }) {
 	const [openImage, setOpenImage] = useState<MediaType | null>(null);
@@ -45,9 +46,7 @@ function Pictures({ data }: { data: MediaType[] }) {
 								objectFit="contain"
 							/>
 						</div>
-						<p className="no_click">
-							{image.filename.slice(0, -7)}.{image.format}
-						</p>
+						<p className="no_click">{image.filename}</p>
 					</div>
 				))}
 			</div>
@@ -57,28 +56,25 @@ function Pictures({ data }: { data: MediaType[] }) {
 	return (
 		<>
 			<Head>
-				<title>kassq - Pictures</title>
+				<title>{profile.username} - Pictures</title>
 				<link
 					rel="canonical"
-					href="https://www.kassq.dev/explorer/pictures"
+					href={`${profile.siteUrl}/explorer/pictures`}
 				/>
 
 				{/* Description */}
-				<meta
-					name="description"
-					content="Funny memes and pictures from the internet."
-				/>
+				<meta name="description" content="A few pictures of me." />
 
 				{/* OpenGraph */}
-				<meta property="og:title" content="Kassq - Pictures" />
+				<meta
+					property="og:title"
+					content={`${profile.username} - Pictures`}
+				/>
 				<meta
 					property="og:url"
-					content="https://www.kassq.dev/explorer/pictures"
+					content={`${profile.siteUrl}/explorer/pictures`}
 				/>
-				<meta
-					property="og:description"
-					content="Funny memes and pictures from the internet."
-				/>
+				<meta property="og:description" content="A few pictures of me." />
 			</Head>
 			<div style={{ height: '100%' }}>
 				{openImage && (
@@ -108,42 +104,40 @@ function Pictures({ data }: { data: MediaType[] }) {
 }
 
 export async function getStaticProps() {
-	const res = await fetch(
-		`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/resources/image?max_results=100`,
-		{
-			headers: {
-				Authorization: `Basic ${Buffer.from(
-					process.env.CLOUDINARY_API_KEY +
-						':' +
-						process.env.CLOUDINARY_API_SECRET
-				).toString('base64')}}`,
-			},
-		}
-	).then((res) => res.json());
+	// Reads every image dropped into /public/images/pictures so you can add or
+	// remove photos just by changing files in that folder — no code edits.
+	const fs = await import('fs');
+	const path = await import('path');
 
-	const data = res.resources.map((image: MediaType) => {
+	const dir = path.join(process.cwd(), 'public', 'images', 'pictures');
+	const allowed = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif', '.svg'];
+
+	let files: string[] = [];
+	try {
+		files = fs
+			.readdirSync(dir)
+			.filter((file) => allowed.includes(path.extname(file).toLowerCase()))
+			.sort();
+	} catch {
+		files = [];
+	}
+
+	const data: MediaType[] = files.map((file) => {
+		const ext = path.extname(file);
+		const name = path.basename(file, ext);
+		const url = `/images/pictures/${file}`;
 		return {
-			url: image.secure_url.replace('/upload/', '/upload/q_auto:low/'),
-			secure_url: image.secure_url,
-			filename:
-				image.public_id.replace('images/', '').length > 25
-					? image.public_id.replace('images/', '').slice(0, 25)
-					: image.public_id.replace('images/', ''),
-			format: image.format,
+			url,
+			secure_url: url,
+			thumbnail: url,
+			public_id: name,
+			filename: name,
+			format: ext.replace('.', ''),
 		};
 	});
 
-	if (!data) {
-		return {
-			notFound: true,
-		};
-	}
-
 	return {
-		props: {
-			data,
-		},
-		revalidate: 10,
+		props: { data },
 	};
 }
 

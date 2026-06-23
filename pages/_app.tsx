@@ -67,6 +67,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 		};
 	}, [router.events]);
 
+	// Standalone, full-screen pages (portfolio + case studies) render outside
+	// the Windows-desktop chrome and are fully responsive (no breakpoint guard).
+	const isStandalone =
+		router.pathname.startsWith('/portfolio') ||
+		router.pathname.startsWith('/work');
+
+	if (isStandalone) {
+		return <Component {...pageProps} />;
+	}
+
 	return (
 		<ContextProvider>
 			{isBreakpoint ? (

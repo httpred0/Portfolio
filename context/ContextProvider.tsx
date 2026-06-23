@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 type LastPos = {
 	x: number;
@@ -24,7 +24,10 @@ type Maximized = {
 	[key: string]: boolean | null;
 };
 
+type Theme = 'dark' | 'light';
+
 type ContextType = {
+	themeState: [Theme, (newTheme: Theme) => void];
 	maximizedState: [Maximized, (newMaximized: Maximized) => void];
 	explorerHistoryState: [string[], (newExplorerHistory: string[]) => void];
 	indexState: [number, (newIndex: number) => void];
@@ -84,6 +87,7 @@ const initialLastPos = {
 };
 
 const initialState: ContextType = {
+	themeState: ['dark', () => {}],
 	maximizedState: [initialMaximized, () => {}],
 	explorerHistoryState: [[], () => {}],
 	indexState: [0, () => {}],
@@ -96,7 +100,18 @@ const initialState: ContextType = {
 export const Context = createContext<ContextType>(initialState);
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
+	const [theme, setTheme] = useState<Theme>('dark');
 	const [maximized, setMaximized] = useState<Maximized>(initialMaximized);
+
+	// Restore the saved theme on first load, then persist any change.
+	useEffect(() => {
+		const saved = localStorage.getItem('theme');
+		if (saved === 'light' || saved === 'dark') setTheme(saved);
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem('theme', theme);
+	}, [theme]);
 	const [explorerHistory, setExplorerHistory] = useState<string[]>([]);
 	const [index, setIndex] = useState<number>(0);
 	const [position, setPosition] = useState<PositionState>(initialPosition);
@@ -106,6 +121,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
 	const [lastPos, setLastPos] = useState<LastPos>(initialLastPos);
 
 	const appContext: ContextType = {
+		themeState: [theme, setTheme],
 		maximizedState: [maximized, setMaximized],
 		explorerHistoryState: [explorerHistory, setExplorerHistory],
 		indexState: [index, setIndex],

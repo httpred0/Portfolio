@@ -22,7 +22,7 @@ function Desktop() {
 								<p>About me.txt</p>
 							</div>
 							<p className={styles.listItemDateModified}>
-								30.12.2021 04:02
+								01/01/2026
 							</p>
 							<p className={styles.listItemType}>Text Document</p>
 							<p className={styles.listItemSize}>2kt</p>
@@ -40,7 +40,7 @@ function Desktop() {
 								<p>Projects</p>
 							</div>
 							<p className={styles.listItemDateModified}>
-								30.12.2021 04:02
+								01/01/2026
 							</p>
 							<p className={styles.listItemType}>Folder</p>
 							<p className={styles.listItemSize}>2kt</p>
@@ -58,7 +58,7 @@ function Desktop() {
 								<p>Tools</p>
 							</div>
 							<p className={styles.listItemDateModified}>
-								30.12.2021 04:02
+								01/01/2026
 							</p>
 							<p className={styles.listItemType}>Folder</p>
 							<p className={styles.listItemSize}>2kt</p>
@@ -76,7 +76,7 @@ function Desktop() {
 								<p>Podcasts I listen to</p>
 							</div>
 							<p className={styles.listItemDateModified}>
-								30.01.2021 04:02
+								01/01/2026
 							</p>
 							<p className={styles.listItemType}>Folder</p>
 							<p className={styles.listItemSize}>2kt</p>
@@ -94,7 +94,7 @@ function Desktop() {
 								<p>Links</p>
 							</div>
 							<p className={styles.listItemDateModified}>
-								30.12.2021 04:02
+								01/01/2026
 							</p>
 							<p className={styles.listItemType}>Folder</p>
 							<p className={styles.listItemSize}>2kt</p>
@@ -113,7 +113,7 @@ function Desktop() {
 								<p>Pictures</p>
 							</div>
 							<p className={styles.listItemDateModified}>
-								30.12.2021 04:02
+								01/01/2026
 							</p>
 							<p className={styles.listItemType}>Folder</p>
 							<p className={styles.listItemSize}>2kt</p>
@@ -132,7 +132,7 @@ function Desktop() {
 								<p>Videos</p>
 							</div>
 							<p className={styles.listItemDateModified}>
-								30.12.2021 04:02
+								01/01/2026
 							</p>
 							<p className={styles.listItemType}>Folder</p>
 							<p className={styles.listItemSize}>2kt</p>
@@ -146,10 +146,10 @@ function Desktop() {
 	return (
 		<>
 			<Head>
-				<title>kassq - Desktop</title>
+				<title>Pedro Loula - Desktop</title>
 				<link
 					rel="canonical"
-					href="https://www.kassq.dev/explorer/desktop"
+					href="https://www.pedroloula.com/explorer/desktop"
 				/>
 
 				{/* Description */}
@@ -159,10 +159,10 @@ function Desktop() {
 				/>
 
 				{/* OpenGraph */}
-				<meta property="og:title" content="Kassq - Desktop" />
+				<meta property="og:title" content="Pedro Loula - Desktop" />
 				<meta
 					property="og:url"
-					content="https://www.kassq.dev/explorer/desktop"
+					content="https://www.pedroloula.com/explorer/desktop"
 				/>
 				<meta
 					property="og:description"

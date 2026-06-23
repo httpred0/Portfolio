@@ -12,8 +12,7 @@ function MediaPlayer(props: Props) {
 	return (
 		<DraggableWindow
 			windowName={'mediaPlayer'}
-			topTitle={`${props.media.filename.slice(0, -7)}.
-            ${props.media.format}`}
+			topTitle={props.media.filename}
 			close={props.closeMedia}
 		>
 			<section className={styles.mediaArea}>{props.component}</section>

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { HistoryType } from '../../../typings';
 import DraggableWindow from '../../utils/DraggableWindow/DraggableWindow';
 import styles from './Terminal.module.css';
+import { profile } from '../../../config/profile';
 
 function Terminal() {
 	const [history, setHistory] = useState<HistoryType[] | []>([]);
@@ -29,7 +30,7 @@ function Terminal() {
 						...history,
 						{
 							input: input,
-							response: `kassq`,
+							response: profile.username,
 						},
 					]);
 					break;
@@ -109,7 +110,7 @@ function Terminal() {
 	return (
 		<DraggableWindow
 			windowName={'terminal'}
-			topTitle={'MINGW64:/c/Users/kassq'}
+			topTitle={`MINGW64:/c/Users/${profile.username}`}
 			topIcon={
 				<Image
 					src={`/icons/terminal/terminal.png`}
@@ -126,7 +127,8 @@ function Terminal() {
 						className={styles.historyItem}
 					>
 						<p className={styles.terminalTitle}>
-							kassq@Kasperi <span>MINGW64</span> <span>~</span>
+							{profile.username}@{profile.username} <span>MINGW64</span>{' '}
+						<span>~</span>
 						</p>
 						<p>$ {item.input}</p>
 						{item.response?.split('<br/>')?.map((text, index) => (
@@ -136,7 +138,8 @@ function Terminal() {
 				))}
 				<div className={styles.historyItem}>
 					<p className={styles.terminalTitle}>
-						kassq@Kasperi <span>MINGW64</span> <span>~</span>
+						{profile.username}@{profile.username} <span>MINGW64</span>{' '}
+						<span>~</span>
 					</p>
 					<div className={`${styles.promt}`}>
 						<p>$</p>

@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { AiOutlinePoweroff } from 'react-icons/ai';
+import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs';
 import { IoIosArrowForward } from 'react-icons/io';
 import { VscSearch } from 'react-icons/vsc';
+import { Context } from '../../../context/ContextProvider';
 import styles from './WindowsMenu.module.css';
+import { profile } from '../../../config/profile';
 
 type Props = {
 	winMenu: boolean;
@@ -33,6 +36,8 @@ const slideVerticalAnimation = {
 
 function WindowsMenu({ winMenu, handleWinMenu }: Props) {
 	const node = useRef<HTMLDivElement>(null);
+	const { themeState } = useContext(Context);
+	const [theme, setTheme] = themeState;
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -66,7 +71,7 @@ function WindowsMenu({ winMenu, handleWinMenu }: Props) {
 			variants={slideVerticalAnimation}
 			className={styles.overflow}
 		>
-			<div className={styles.winMenu} ref={node}>
+			<div className={`${styles.winMenu} startMenu`} ref={node}>
 				<div className={styles.winMenuContainer}>
 					<div className={styles.winMenuSearch}>
 						<div className={styles.inputWithIcon}>
@@ -170,32 +175,39 @@ function WindowsMenu({ winMenu, handleWinMenu }: Props) {
 											<p>Videos</p>
 										</div>
 									</Link>
-									<div>
-										<Image
-											src="/icons/firefox/firefox.png"
-											alt="img"
-											width={30}
-											height={30}
-										></Image>
-										<p>Firefox</p>
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div className={styles.winMenuFooter}>
-					<div>
+					<div className={styles.footerItem}>
 						<Image
-							src="/images/windowsUser.webp"
-							alt=""
+							src="/images/profile-pedro.svg"
+							alt="Pedro Loula"
 							width={30}
 							height={30}
+							unoptimized
 						></Image>
-						<p>kassq</p>
+						<p>{profile.username}</p>
 					</div>
-					<div>
-						<AiOutlinePoweroff />
+					<div className={styles.winMenuFooterActions}>
+						<div
+							className={styles.themeToggle}
+							onClick={() =>
+								setTheme(theme === 'dark' ? 'light' : 'dark')
+							}
+							title="Toggle light / dark mode"
+						>
+							{theme === 'dark' ? (
+								<BsSunFill />
+							) : (
+								<BsMoonStarsFill />
+							)}
+						</div>
+						<div className={styles.footerItem}>
+							<AiOutlinePoweroff />
+						</div>
 					</div>
 				</div>
 				<div className={styles.winMenuBg} />

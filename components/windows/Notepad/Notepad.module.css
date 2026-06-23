@@ -5,9 +5,9 @@
 
 .main nav {
 	height: 4.8rem;
-	border-bottom: 1px solid #1d1d1d;
+	border-bottom: 1px solid var(--divider);
 	border-radius: 10px 10px 0 0;
-	background-color: #202020;
+	background-color: var(--window-nav-bg);
 }
 
 @keyframes fadeIn {
@@ -31,7 +31,7 @@
 }
 
 .top {
-	background-color: #202020;
+	background-color: var(--window-nav-bg);
 }
 
 .navButton {
@@ -43,7 +43,7 @@
 }
 
 .navButton:hover:first-child {
-	background-color: #2e2e2e;
+	background-color: var(--hover-bg);
 }
 
 .navButtons {
@@ -64,16 +64,16 @@
 	position: absolute;
 	display: none;
 	width: 15rem;
-	border: 1px solid #1d1d1d;
+	border: 1px solid var(--divider);
 	border-radius: 10px;
-	background-color: #272727;
+	background-color: var(--surface-bg);
 	transform-origin: top center;
 	animation: growDown 300ms ease-in-out forwards;
 	animation: growDown 300ms ease-in-out forwards;
 }
 
 .navButtons .navButtonsDropdown p {
-	color: gray;
+	color: var(--text-muted);
 }
 
 .navButtons .navButtonsItem {
@@ -97,7 +97,7 @@
 }
 
 .navButtons .navButtonsItem:hover {
-	background-color: #2e2e2e;
+	background-color: var(--hover-bg);
 }
 
 @keyframes fadeIn {
@@ -148,7 +148,7 @@
 	height: 100%;
 	border: none;
 	background-color: transparent;
-	color: #fff;
+	color: var(--window-text);
 	outline: none;
 	resize: none;
 	user-select: auto;
@@ -161,9 +161,9 @@
 	justify-content: space-between;
 	width: 100%;
 	height: 2rem;
-	border-top: 1px solid #1d1d1d;
+	border-top: 1px solid var(--divider);
 	border-radius: 0 0 10px 10px;
-	background-color: #202020;
+	background-color: var(--window-nav-bg);
 }
 
 .footer p {
@@ -171,7 +171,7 @@
 	align-items: center;
 	margin: 5px 0;
 	padding: 5px 10px;
-	color: gray;
+	color: var(--text-muted);
 	font-size: 0.8rem;
 }
 
@@ -181,5 +181,5 @@
 }
 
 .footer > div:nth-child(2) p {
-	border-left: 1px solid gray;
+	border-left: 1px solid var(--divider);
 }

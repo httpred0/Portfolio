@@ -6,6 +6,7 @@ import { FiVolume2 } from 'react-icons/fi';
 import { ErrorType } from '../../../typings';
 import Error from '../../windows/Error/Error';
 import styles from './Footer.module.css';
+import Weather from './Weather';
 import WindowsMenu from './WindowsMenu';
 
 function Footer() {
@@ -59,7 +60,8 @@ function Footer() {
 						/>
 					);
 				})}
-			<div className={styles.container}>
+			<div className={`${styles.container} taskbar`}>
+				<Weather />
 				<section className={styles.iconContainer}>
 					<div
 						className={`${styles.icon} windowsIcon`}
@@ -85,18 +87,13 @@ function Footer() {
 					</Link>
 					<div
 						className={styles.icon}
-						onClick={() => handleError('Firefox')}
-					>
-						<Image
-							src={'/icons/firefox/firefox.png'}
-							width={25}
-							height={25}
-							alt="logo"
-						/>
-					</div>
-					<div
-						className={styles.icon}
-						onClick={() => handleError('Spotify')}
+						onClick={() =>
+							window.open(
+								'https://open.spotify.com/intl-pt/artist/5ihrpwA9GYrZ51RKwQ9tja',
+								'_blank',
+								'noopener,noreferrer'
+							)
+						}
 					>
 						<Image
 							src={'/icons/spotify/spotify.png'}
@@ -105,51 +102,34 @@ function Footer() {
 							alt="logo"
 						/>
 					</div>
-					<div
-						className={styles.icon}
-						onClick={() => handleError('Steam')}
-					>
-						<Image
-							src={'/icons/steam/steam.png'}
-							width={25}
-							height={25}
-							alt="logo"
-						/>
-					</div>
-					<div
-						className={styles.icon}
-						onClick={() => handleError('Discord')}
-					>
-						<Image
-							src={'/icons/discord/discord.png'}
-							width={25}
-							height={25}
-							alt="logo"
-						/>
-					</div>
-					<div
-						className={styles.icon}
-						onClick={() =>
-							handleError('Visual Studio Code - Insiders')
-						}
-					>
-						<Image
-							src={'/icons/vscode/vscode.png'}
-							width={25}
-							height={25}
-							alt="logo"
-						/>
-					</div>
-					<Link href="/terminal" passHref>
-						<div className={styles.icon}>
+					{[
+						{ name: 'Claude', icon: 'claude', url: 'https://claude.ai/new' },
+						{ name: 'Codex', icon: 'codex', url: 'https://openai.com/codex/' },
+						{ name: 'Figma', icon: 'figma', url: 'https://www.figma.com/' },
+						{ name: 'Granola', icon: 'granola', url: 'https://www.granola.ai/' },
+						{ name: 'Slack', icon: 'slack', url: 'https://slack.com/' },
+						{ name: 'Whispr Flow', icon: 'whisprflow', url: 'https://wisprflow.ai/' },
+					].map((app) => (
+						<div
+							key={app.icon}
+							className={styles.icon}
+							onClick={() =>
+								window.open(
+									app.url,
+									'_blank',
+									'noopener,noreferrer'
+								)
+							}
+						>
 							<Image
-								src={'/icons/terminal/terminal.png'}
+								src={`/svg/${app.icon}.svg`}
 								width={25}
 								height={25}
-								alt="logo"
+								alt={app.name}
+								unoptimized
 							/>
 						</div>
-					</Link>
+					))}
 				</section>
 				<section className={styles.toolbarContainer}>
 					<div className={styles.language}>

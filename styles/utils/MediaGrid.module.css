@@ -8,14 +8,18 @@
 }
 
 .imageWrapper {
+	position: relative;
 	width: 100px;
 	height: 100px;
+	overflow: hidden;
+	border-radius: 4px;
 }
 
 .mediaItem {
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	align-self: start;
 	gap: 5px;
 	width: 110px;
 	padding: 5px;
@@ -25,6 +29,11 @@
 	cursor: pointer;
 }
 
+.mediaItem p {
+	font-size: 0.62rem;
+	line-height: 1.25;
+}
+
 .mediaItem:hover {
-	background-color: #2e2e2e;
+	background-color: var(--hover-bg);
 }

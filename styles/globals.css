@@ -1,15 +1,95 @@
+/* ===========================================================================
+   Theme tokens. Dark is the default (matches the original design); light mode
+   is applied via [data-theme='light'] on <html>. Components consume these
+   variables instead of hardcoded colors. The Terminal stays dark in both
+   themes on purpose (terminals are dark by nature).
+   =========================================================================== */
+:root,
+[data-theme='dark'] {
+	--window-bg: #191919;
+	--window-nav-bg: #202020;
+	--window-border: #323232;
+	--window-text: #fff;
+	--text-muted: #9a9a9a;
+	--hover-bg: rgb(255 255 255 / 9%);
+	--surface-bg: #272727;
+	--divider: #32323285;
+	--taskbar-bg: rgb(28 28 28 / 65%);
+	--menu-bg: rgb(28 28 28 / 65%);
+	--menu-footer-bg: rgb(0 0 0 / 15%);
+	--taskbar-text: #f9f9f9;
+	--noise-image: url('/images/darknoice.png');
+	--accent: #4cc2ff;
+	--scrollbar-thumb: #9f9f9f;
+	--scrollbar-track: #2c2c2c;
+}
+
+[data-theme='light'] {
+	--window-bg: #f3f3f3;
+	--window-nav-bg: #eaeaea;
+	--window-border: #d6d6d6;
+	--window-text: #1a1a1a;
+	--text-muted: #5a5a5a;
+	--hover-bg: #0000000f;
+	--surface-bg: #ffffff;
+	--divider: #00000017;
+	--taskbar-bg: rgb(243 243 243 / 85%);
+	--menu-bg: rgb(243 243 243 / 85%);
+	--menu-footer-bg: rgb(243 243 243 / 25%);
+	--taskbar-text: #1a1a1a;
+	--noise-image: none;
+	--accent: #005fb8;
+	--scrollbar-thumb: #b0b0b0;
+	--scrollbar-track: #e0e0e0;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 	font-family: 'Open Sans', sans-serif;
 	user-select: none;
-	scrollbar-color: #9f9f9f #2c2c2c;
+	scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 	scrollbar-width: thin;
+}
+
+/* Window content text adapts to the theme. The global `p { color:#fff }`
+   below keeps desktop-icon labels white over the wallpaper; these wrapper
+   rules override it inside themed surfaces with higher specificity. */
+.windowSurface,
+.windowSurface p,
+.windowSurface input,
+.windowSurface textarea {
+	color: var(--window-text);
+}
+
+.taskbar,
+.taskbar p,
+.startMenu,
+.startMenu p,
+.startMenu h2,
+.startMenu input {
+	color: var(--taskbar-text);
+}
+
+/* Monochrome-black icons (e.g. Notion) are invisible on dark surfaces — flip
+   them to white in dark mode. */
+[data-theme='dark'] .invert-on-dark {
+	filter: invert(1);
 }
 
 body {
 	overflow: hidden;
+	/* Wallpaper covers the full viewport (incl. behind the translucent
+	   taskbar) so the footer's acrylic blur has the image to blur.
+	   no-repeat + cover means it scales to fill instead of tiling on
+	   viewports that don't match the image's aspect ratio. */
+	min-height: 100vh;
+	background-image: url('/images/bliss.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
 }
 
 p {

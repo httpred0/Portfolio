@@ -3,38 +3,28 @@ import Image from 'next/image';
 import Icons from '../../components/modules/Icons/Icons';
 import FileExplorer from '../../components/windows/FileExplorer/FileExplorer';
 import styles from '../../styles/utils/List.module.css';
-import { ProjectType } from '../../typings';
+import { profile } from '../../config/profile';
 
-function Projects({ data }: { data: ProjectType[] }) {
+function Projects() {
+	const items = [
+		{ name: 'Portfolio', url: '/portfolio' },
+		...profile.projects.map((p) => ({
+			name: p.name,
+			url: `/work/${p.slug}`,
+		})),
+	];
+
 	const content = () => {
-		const getDate = (date: string) => {
-			const dateString = new Date(date).toLocaleDateString('en-GB', {
-				year: 'numeric',
-				month: '2-digit',
-				day: '2-digit',
-				hour: '2-digit',
-				minute: '2-digit',
-			});
-			return dateString.replace(',', '');
-		};
-
-		const formatSize = (size: number) => {
-			if (size > 1024) {
-				return `${(size / 1024).toFixed(2)} MB`;
-			}
-			return `${size} KB`;
-		};
-
 		return (
 			<>
 				<div className={styles.listItemContainer}>
-					{data.map((project) => (
+					{items.map((project) => (
 						<div
 							className={styles.listItem}
-							key={project.id}
+							key={project.name}
 							onClick={() =>
 								window.open(
-									project.html_url,
+									project.url,
 									'_blank',
 									'noopener,noreferrer'
 								)
@@ -42,20 +32,19 @@ function Projects({ data }: { data: ProjectType[] }) {
 						>
 							<div className={styles.listItemName}>
 								<Image
-									src="/svg/github.svg"
+									src="/svg/chrome.svg"
 									alt="icon"
 									width={16}
 									height={16}
+									unoptimized
 								></Image>
 								<p>{project.name}</p>
 							</div>
 							<p className={styles.listItemDateModified}>
-								{getDate(project.updated_at)}
+								01/01/2026
 							</p>
 							<p className={styles.listItemType}>Shortcut</p>
-							<p className={styles.listItemSize}>
-								{formatSize(project.size)}
-							</p>
+							<p className={styles.listItemSize}>2kt</p>
 						</div>
 					))}
 				</div>
@@ -65,59 +54,40 @@ function Projects({ data }: { data: ProjectType[] }) {
 	return (
 		<>
 			<Head>
-				<title>kassq - Projects</title>
+				<title>{profile.username} - Projects</title>
 				<link
 					rel="canonical"
-					href="https://www.kassq.dev/explorer/projects"
+					href={`${profile.siteUrl}/explorer/projects`}
 				/>
 
 				{/* Description */}
-				<meta
-					name="description"
-					content="Too lazy to go to my GitHub page? Here's a list of my open source projects. No forks, no private repos, only my public repos."
-				/>
+				<meta name="description" content="A few things I've built." />
 
 				{/* OpenGraph */}
-				<meta property="og:title" content="Kassq - Quick access" />
+				<meta
+					property="og:title"
+					content={`${profile.username} - Projects`}
+				/>
 				<meta
 					property="og:url"
-					content="https://www.kassq.dev/explorer/projects"
+					content={`${profile.siteUrl}/explorer/projects`}
 				/>
 				<meta
 					property="og:description"
-					content="Too lazy to go to my GitHub page? Here's a list of my open source projects. No forks, no private repos, only my public repos."
+					content="A few things I've built."
 				/>
 			</Head>
 			<div style={{ height: '100%' }}>
 				<FileExplorer
 					icon="folder"
 					folder="Projects"
-					component={content()}
 					topNav={true}
+					component={content()}
 				/>
 				<Icons />
 			</div>
 		</>
 	);
-}
-
-export async function getStaticProps() {
-	const res = await fetch(`https://api.github.com/users/KasperiP/repos`);
-	const data = (await res.json()).filter(
-		(project: ProjectType) =>
-			project.fork === false && project.full_name !== 'KasperiP/KasperiP'
-	);
-
-	if (!data) {
-		return {
-			notFound: true,
-		};
-	}
-
-	return {
-		props: { data },
-		revalidate: 10,
-	};
 }
 
 export default Projects;

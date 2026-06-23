@@ -12,7 +12,7 @@
 }
 
 .listItem:hover {
-	background-color: #2e2e2e;
+	background-color: var(--hover-bg);
 }
 
 .listItem div,
@@ -43,7 +43,7 @@
 
 .listItemSize {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	width: 10%;
-	padding-right: 5px;
+	padding-left: 10px;
 }
