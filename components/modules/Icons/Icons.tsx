@@ -91,17 +91,30 @@ function Icons() {
 							</div>
 						</Link>
 					</div>
-					<Link href={'/explorer/tools'} passHref>
-						<div className={`${styles.item} selectoItem`}>
-							<Image
-								src="/icons/folder/folder.png"
-								alt="icon"
-								width={40}
-								height={40}
-							></Image>
-							<p>Tools</p>
-						</div>
-					</Link>
+					<div className={styles.row}>
+						<Link href={'/explorer/tools'} passHref>
+							<div className={`${styles.item} selectoItem`}>
+								<Image
+									src="/icons/folder/folder.png"
+									alt="icon"
+									width={40}
+									height={40}
+								></Image>
+								<p>Tools</p>
+							</div>
+						</Link>
+						<Link href={'/explorer/skills'} passHref>
+							<div className={`${styles.item} selectoItem`}>
+								<Image
+									src="/icons/folder/folder.png"
+									alt="icon"
+									width={40}
+									height={40}
+								></Image>
+								<p>Skills</p>
+							</div>
+						</Link>
+					</div>
 					<Link href={'/explorer/links'} passHref>
 						<div className={`${styles.item} selectoItem`}>
 							<Image

@@ -46,6 +46,25 @@ function Desktop() {
 							<p className={styles.listItemSize}>2kt</p>
 						</div>
 					</Link>
+					<Link href="/portfolio" passHref>
+						<div className={styles.listItem}>
+							<div className={styles.listItemName}>
+								<Image
+									src="/svg/chrome.svg"
+									alt="icon"
+									width={16}
+									height={16}
+									unoptimized
+								></Image>
+								<p>Portfolio</p>
+							</div>
+							<p className={styles.listItemDateModified}>
+								01/01/2026
+							</p>
+							<p className={styles.listItemType}>Shortcut</p>
+							<p className={styles.listItemSize}>2kt</p>
+						</div>
+					</Link>
 					<Link href="/explorer/tools" passHref>
 						<div className={styles.listItem}>
 							<div className={styles.listItemName}>
@@ -56,6 +75,24 @@ function Desktop() {
 									height={16}
 								></Image>
 								<p>Tools</p>
+							</div>
+							<p className={styles.listItemDateModified}>
+								01/01/2026
+							</p>
+							<p className={styles.listItemType}>Folder</p>
+							<p className={styles.listItemSize}>2kt</p>
+						</div>
+					</Link>
+					<Link href="/explorer/skills" passHref>
+						<div className={styles.listItem}>
+							<div className={styles.listItemName}>
+								<Image
+									src="/icons/folder/folder.png"
+									alt="icon"
+									width={16}
+									height={16}
+								></Image>
+								<p>Skills</p>
 							</div>
 							<p className={styles.listItemDateModified}>
 								01/01/2026
