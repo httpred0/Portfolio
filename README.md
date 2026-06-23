@@ -1,37 +1,31 @@
-# Windows11-portfolio
-[![Open in Visual Studio Code](https://img.shields.io/badge/Open%20In%20Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://open.vscode.dev/KasperiP/windows11-portfolio)
+# Pedro Loula — Portfolio
 
-Windows 11 inspired personal portfolio website built using Next.js & deployed on Vercel. Feel free to clean up my messy code and teach me how to write better typescript. Im noob 😩.
+My personal portfolio: a small desktop-shaped world for exploring my work in product design, systems, and AI.
 
-![windows11-banner](https://i.imgur.com/muQyeAG.png)
+It brings together selected projects, experiments, and a little more about how I think and work. Visit it at [pedroloula.com](https://www.pedroloula.com).
 
-## Demo
-View the website on Vercel: https://www.kassq.dev
+![Portfolio preview](public/og.png)
 
-## Getting Started
+## Inside
 
-First, run the development server:
+- Selected product and design-system work
+- Case studies for Portoro, Agentic Design System, Trashie, Plug, and Froggo's
+- An interactive Windows-inspired interface, with desktop apps, folders, and a terminal
+
+## Built with
+
+Next.js, React, TypeScript, Framer Motion, GSAP, and a slightly unreasonable fondness for old-school desktop interfaces.
+
+## Run it locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000).
 
+## Credit
 
-## Learn More
+This portfolio is a personal adaptation of the **Windows11-portfolio** concept, inspired by [kassq](https://github.com/KasperiP/windows11-portfolio). The content, projects, visual direction, and custom interactions are my own.
 
-To learn more about Next.js, take a look at the following resources:
-
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
