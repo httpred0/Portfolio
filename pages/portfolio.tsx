@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { profile } from '../config/profile';
 import styles from '../styles/Portfolio.module.css';
@@ -208,14 +209,15 @@ function Portfolio() {
 			</Head>
 
 			<div className={styles.page} ref={root}>
-				<a
-					className={`${styles.topLink} ${styles.topLeft}`}
-					href="/"
-					data-reveal
-				>
-					<ArrowLeft />
-					Back to Windows
-				</a>
+				<Link href="/" passHref>
+					<a
+						className={`${styles.topLink} ${styles.topLeft}`}
+						data-reveal
+					>
+						<ArrowLeft />
+						Back to Windows
+					</a>
+				</Link>
 				<span className={styles.logo} data-reveal>
 					Pedro Loula
 				</span>
